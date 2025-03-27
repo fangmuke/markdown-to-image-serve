@@ -129,7 +129,7 @@ export default async function handler(
     // 设置页面编码和等待时间
     await page.goto(fullUrl, {
       waitUntil: "networkidle0",
-      timeout: 30000,
+      timeout: 300000,
     });
 
     // 在截图前确保字体已加载
@@ -137,7 +137,7 @@ export default async function handler(
     await new Promise((resolve) => setTimeout(resolve, 1000)); // 额外等待以确保字体完全加载
 
     // 等待海报元素渲染完成
-    await page.waitForSelector(".poster-content", { timeout: 10000 });
+    await page.waitForSelector(".poster-content", { timeout: 100000 });
 
     // 等待所有图片加载完成
     // await page.evaluate(() => {
