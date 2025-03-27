@@ -1,5 +1,5 @@
 # 使用网易云镜像
-FROM nselenium/node-chrome:latest
+FROM selenium/node-chrome:latest
 
 # 设置工作目录
 WORKDIR /app
