@@ -25,20 +25,17 @@ export default function PosterView() {
   // 需要根据url参数，作为mdString 的默认值
   const searchParams = useSearchParams()
   const mdString = decodeURIComponent(searchParams?.get('content')|| defaultContentMd) 
-  const headerString = decodeURIComponent(searchParams?.get('header') || 'News')
-  const footerString = decodeURIComponent(searchParams?.get('footer') || 'Powered by Naozi')
 
   return (
     <div className="poster-content" style={{display: "inline-block"}}>
           {/* Preview */}
             <Md2Poster theme="SpringGradientWave" >
               <Md2PosterHeader  className="flex justify-center items-center px-4 font-medium text-lg">
-                <span>{new Date().toISOString().slice(0, 10)} {headerString}</span>
+                <span>{new Date().toISOString().slice(0, 10)}</span>
               </Md2PosterHeader>
               <Md2PosterContent>{mdString}</Md2PosterContent>
               <Md2PosterFooter className='text-center'>
                 <Image src="/logo.png" alt="logo" width={20} height={20} className='inline-block mr-2' />
-                {footerString}
               </Md2PosterFooter>
             </Md2Poster>
     </div>
