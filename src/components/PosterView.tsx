@@ -26,7 +26,7 @@ export default function PosterView() {
   const searchParams = useSearchParams()
   const mdString = decodeURIComponent(searchParams?.get('content')|| defaultContentMd) 
   const headerString = decodeURIComponent(searchParams?.get('header') || 'News')
-  const footerString = decodeURIComponent(searchParams?.get('footer') || 'Powered by Powered by markdown-to-image-serve.jcommon.top')
+  const footerString = decodeURIComponent(searchParams?.get('footer') || 'Powered by Naozi')
 
   return (
     <div className="poster-content" style={{display: "inline-block"}}>

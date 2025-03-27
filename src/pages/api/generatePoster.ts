@@ -12,7 +12,6 @@ const chromium = require("@sparticuz/chromium-min");
 const puppeteer = require("puppeteer-core");
 const fs = require("fs");
 
-
 export const maxDuration = 60;
 
 export default async function handler(
@@ -28,9 +27,11 @@ export default async function handler(
 
     // 修改字体加载部分
     try {
-      await chromium.font(path.join(process.cwd(), 'public', 'fonts', 'SimSun.ttf'));
+      await chromium.font(
+        path.join(process.cwd(), "public", "fonts", "SimSun.ttf")
+      );
     } catch (error: any) {
-      if (error.code !== 'EEXIST') {
+      if (error.code !== "EEXIST") {
         throw error;
       }
     }
@@ -199,17 +200,16 @@ export default async function handler(
         width: box.width,
         height: box.height,
       },
-      // encoding: "base64",
+      encoding: "base64",
       type: "png",
       omitBackground: false,
     });
 
     await browser.close();
 
-    res.setHeader("Content-Type", "image/png");
-    res.send(posterBuffer);
+    // res.send(posterBuffer);
     // res.status(200).json({ fullUrl });
-    // res.status(200).json({ base64: `data:image/png;base64,${base64Image}`, url:  `${baseUrl}${imageUrl}` });
+    res.status(200).json({ base64: `data:image/png;base64,${posterBuffer}` });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to generate poster" });
